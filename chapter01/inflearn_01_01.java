@@ -1,3 +1,4 @@
+package chapter01;
 import java.util.Scanner;
 
 public class inflearn_01_01 {
