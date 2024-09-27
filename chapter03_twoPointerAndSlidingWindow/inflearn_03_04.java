@@ -1,7 +1,5 @@
 package chapter03_twoPointerAndSlidingWindow;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class inflearn_03_04 {
@@ -17,14 +15,15 @@ public class inflearn_03_04 {
     }
 
     public int solution(int n, int m, int[] arr) {
+        //이렇게 풀면 틀림. 강의 풀이가 맞는거.
         int answer = 0, tmp = 0;
-        for (int i = 0; i < n; i++) {if (i < m) {
+        for (int i = 0; i < n; i++) {
+            if (i < m) {
                 answer += arr[i];
-                if (i==m-1){
+                if (i == m - 1) {
                     tmp = answer;
                 }
-            }
-            else {
+            } else {
                 tmp = tmp + arr[i] - arr[i - m];
                 answer = Math.max(tmp, answer);
             }
@@ -32,9 +31,17 @@ public class inflearn_03_04 {
         return answer;
     }
 
-    public List<Integer> lectureSolution(int n, int m, int[] n_arrr) {
-        // 흐름은 동일. 풀이에서는 기본값에 대한 for문을 따로 먼저 돌림.
-        List<Integer> answer = new ArrayList<>();
+    public int lectureSolution(int n, int m, int[] arr) {
+        //
+        int answer = 0, sum = 0, lt=0;
+        for (int rt = 0; rt < n; rt++) {
+            sum+= arr[rt];
+            if (sum ==m) answer++;
+            while (sum>=m){
+                sum-=arr[lt++];
+                if (sum ==m) answer++;
+            }
+        }
         return answer;
     }
 }
