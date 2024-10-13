@@ -1,0 +1,11 @@
+package chapter07_DFS_BFS;
+
+class Node {
+    int data;
+    Node lt, rt;
+
+    public Node(int val) {
+        data = val;
+        lt = rt = null;
+    }
+}
